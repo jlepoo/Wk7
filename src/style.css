@@ -1,9 +1,15 @@
-.wrapper {
+.app-main {
   max-width: 600px;
   margin: 40px auto;
+}
+
+.wrapper {
   padding: 30px;
   border: 1px solid plum;
   border-radius: 20px;
+}
+.temperature strong {
+  font-size: 65px;
 }
 
 li {
