@@ -1,0 +1,11 @@
+.wrapper {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  border: 1px solid plum;
+  border-radius: 20px;
+}
+
+li {
+  list-style: none;
+}
