@@ -8,8 +8,12 @@
   border: 1px solid plum;
   border-radius: 20px;
 }
-.temperature strong {
-  font-size: 65px;
+strong {
+  font-size: 40px;
+}
+.units {
+  position: relative;
+  top: -17px;
 }
 
 li {
