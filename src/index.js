@@ -21,6 +21,15 @@ function showDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
+// API
+function weather(city) {
+  var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  var apiKey = "15afb9017456f61d469f071faff65fed";
+  axios.get(apiURL).then(showTemp);
+}
+
+weather("sydney");
+
 // Show temperature
 function showTemp(response) {
   document.querySelector("#temperature").innerHTML = Math.round(
@@ -44,15 +53,6 @@ function showTemp(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
-
-//API
-function weather(city) {
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  let apiKey = "15afb9017456f61d469f071faff65fed";
-  axios.get(apiURL).then(showTemp);
-}
-
-weather("sydney");
 
 //Get city
 function citySearch(event) {
