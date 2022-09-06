@@ -26,7 +26,8 @@ function showTemp(response) {
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-  document.querySelector(h1).innerHTML = response.data.name;
+  celsius = response.data.main.temp;
+  document.querySelector("h1").innerHTML = response.data.name;
   document.querySelector("#descriptor").innerHTML =
     response.data.weather[0].description;
   document.querySelector("#humid").innerHTML = response.data.main.humidity;
@@ -50,6 +51,8 @@ function weather(city) {
   let apiKey = "15afb9017456f61d469f071faff65fed";
   axios.get(apiURL).then(showTemp);
 }
+
+weather("sydney");
 
 //Get city
 function citySearch(event) {
@@ -76,3 +79,24 @@ function getCoords(position) {
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getLocation);
+
+//unit conversion
+function fahrenheitTemp(event) {
+  event.preventDefault();
+  let fahrenheitElement = document.querySelector("#temperature");
+  let fahrenheitConvert = (celsius * 9) / 5 + 32;
+  fahrenheitElement.innerHTML = Math.round(fahrenheitConvert);
+  document.querySelector("#cls").classList.remove("active");
+  document.querySelector("#frn").classList.add("active");
+}
+document.querySelector("#frn").addEventListener("click", fahrenheitTemp);
+
+function celsiusTemp(event) {
+  event.preventDefault();
+  document.querySelector("temperature").innerHTML = Math.round(celsius);
+  document.querySelector("#cls").classList.add("active");
+  document.querySelector("#frn").classList.remove("active");
+}
+document.querySelector("#cls").addEventListener("click", celsiusTemp);
+
+let celsius = null;
