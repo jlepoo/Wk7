@@ -1,15 +1,29 @@
+.container {
+  font-family: arima;
+  font-weight: 500;
+  color: #ffb5b5;
+}
 .app-main {
-  max-width: 600px;
+  max-width: 550px;
   margin: 40px auto;
 }
 
 .wrapper {
   padding: 30px;
-  border: 1px solid plum;
+  border: 1px solid #ffcbcb;
   border-radius: 20px;
+}
+.h1 {
+  padding: 15px 0;
+}
+.temp {
+  color: #f76b8a;
 }
 strong {
   font-size: 40px;
+}
+p {
+  line-height: 10px;
 }
 .units {
   position: relative;
@@ -20,11 +34,36 @@ li {
   list-style: none;
 }
 .weather-temperature .active {
-  color: black;
+  color: #ffb5b5;
   text-decoration: none;
   cursor: default;
 }
 .weather-temperature .active:hover {
-  color: black;
+  color: #ffb5b5;
   text-decoration: none;
+}
+.btn-search {
+  background-color: #f76b8a;
+  border: none;
+  color: #fff;
+  padding: 6px;
+  border-radius: 10px;
+}
+.btn-search:hover {
+  background-color: #fff;
+  color: #f76b8a;
+  border: 1px solid #f76b8a;
+}
+.location-button {
+  background-color: #f76b8a;
+  border: none;
+  color: #fff;
+  width: 150px;
+  height: 35px;
+  border-radius: 10px;
+}
+.location-button:hover {
+  background-color: #fff;
+  color: #f76b8a;
+  border: 1px solid #f76b8a;
 }
