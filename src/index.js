@@ -23,8 +23,8 @@ function showDate(timestamp) {
 }
 // API
 function weather(city) {
-  var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   var apiKey = "15afb9017456f61d469f071faff65fed";
+  var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(showTemp);
 }
 
