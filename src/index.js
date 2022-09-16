@@ -58,7 +58,7 @@ function showTemp(response) {
 // Get forecast
 function displayForecast() {
   let forecastHTML = `<div class="row">`;
-  let days = ["Sat", "Sun", "Mon", "Tue", "Wed"];
+  let days = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thur"];
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
