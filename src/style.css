@@ -1,7 +1,7 @@
 .container {
   font-family: arima;
   font-weight: 500;
-  color: #ffb5b5;
+  color: #ff007b;
 }
 .app-main {
   max-width: 550px;
@@ -66,4 +66,12 @@ li {
   background-color: #fff;
   color: #f76b8a;
   border: 1px solid #f76b8a;
+}
+.app-second {
+  padding: 20px;
+  margin: 15px 0;
+  color: #ff007b;
+  background-color: #ffb5b5;
+  border: 1px solid #f76b8a;
+  text-align: center;
 }

@@ -52,6 +52,24 @@ function showTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  displayForecast();
+}
+
+// Get forecast
+function displayForecast() {
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sat", "Sun", "Mon", "Tue", "Wed"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+              ${day}
+              <img src="http://openweathermap.org/img/wn/04n@2x.png" alt="forecast" width="40"><br />
+              12° 18°
+            </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  document.querySelector("#forecast").innerHTML = forecastHTML;
 }
 
 //Get city
