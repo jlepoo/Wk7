@@ -53,10 +53,11 @@ function showTemp(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
   displayForecast();
-}
 
+  getForecast(response.data.coord);
+}
 // Get forecast
-function displayForecast() {
+function displayForecast(response) {
   let forecastHTML = `<div class="row">`;
   let days = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thur"];
   days.forEach(function (day) {
@@ -70,6 +71,11 @@ function displayForecast() {
   });
   forecastHTML = forecastHTML + `</div>`;
   document.querySelector("#forecast").innerHTML = forecastHTML;
+}
+function getForecast(Coordinates) {
+  let apiKey = "15afb9017456f61d469f071faff65fed";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 //Get city
