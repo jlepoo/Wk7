@@ -21,9 +21,15 @@ function showDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 // API
 function weather(city) {
-  var apiKey = "15afb9017456f61d469f071faff65fed";
+  var apiKey = "c95d60a1e3adbeb286133f1ebebc2579";
   var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(showTemp);
 }
@@ -58,22 +64,26 @@ function showTemp(response) {
 }
 // Get forecast
 function displayForecast(response) {
+  let forecast = response.data.daily;
+  document.querySelector("#forecast").innerHTML = forecastHTML;
   let forecastHTML = `<div class="row">`;
-  let days = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thur"];
-  days.forEach(function (day) {
-    forecastHTML =
+  forecast.forEach(function (forecastDay.index) {
+    if (index < 6) {forecastHTML =
       forecastHTML +
       `<div class="col-2">
-              ${day}
-              <img src="http://openweathermap.org/img/wn/04n@2x.png" alt="forecast" width="40"><br />
-              12° 18°
+              ${formatDay(forecastDay.dt)}
+              <img src="http://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png" alt="forecast" width="40"><br />
+              ${Math.round(forecastDay.temp.min)}° ${Math.round(
+        forecastDay.temp.max)}
             </div>`;
+              }
   });
   forecastHTML = forecastHTML + `</div>`;
-  document.querySelector("#forecast").innerHTML = forecastHTML;
 }
 function getForecast(Coordinates) {
-  let apiKey = "15afb9017456f61d469f071faff65fed";
+  let apiKey = "c95d60a1e3adbeb286133f1ebebc2579";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
@@ -94,7 +104,7 @@ function getLocation(event) {
   navigator.geolocation.getCurrentPosition(getCoords);
 }
 function getCoords(position) {
-  let apiKey = "15afb9017456f61d469f071faff65fed";
+  let apiKey = "c95d60a1e3adbeb286133f1ebebc2579";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
