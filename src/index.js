@@ -58,33 +58,30 @@ function showTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-  displayForecast();
 
   getForecast(response.data.coord);
 }
 // Get forecast
 function displayForecast(response) {
   let forecast = response.data.daily;
-  document.querySelector("#forecast").innerHTML = forecastHTML;
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
         `<div class="col-2">
-              ${formatDay(forecastDay.dt)}
-              <img src="http://openweathermap.org/img/wn/${
-                forecastDay.weather[0].icon
-              }@2x.png" alt="forecast" width="40"><br />
-              ${Math.round(forecastDay.temp.min)}° ${Math.round(
-          forecastDay.temp.max
-        )}
-            </div>`;
+      ${formatDay(forecastDay.dt)}
+      <img src="http://openweathermap.org/img/wn/${
+        forecastDay.weather[0].icon
+      }@2x.png" alt="forecast" width="40"><br />
+      ${Math.round(forecastDay.temp.min)}° ${Math.round(forecastDay.temp.max)}
+        </div>`;
     }
   });
   forecastHTML = forecastHTML + `</div>`;
+  document.querySelector("#forecast").innerHTML = forecastHTML;
 }
-function getForecast(Coordinates) {
+function getForecast(coordinates) {
   let apiKey = "c95d60a1e3adbeb286133f1ebebc2579";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
